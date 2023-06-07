@@ -9,9 +9,8 @@ using NLayer.Core.Services;
 namespace NLayer.API.Controllers
 {
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+  
+    public class ProductsController : CustomBaseController
     {
         private readonly IMapper _mapper;
         private readonly IService<Product> _service;
@@ -27,7 +26,8 @@ namespace NLayer.API.Controllers
         {
             var products = await _service.GetAllAsync();
             var productDtos = _mapper.Map<List<ProductDto>>(products.ToList());
-            return Ok(CustomResponseDto<List<ProductDto>>.Success(200, productDtos));
+
+            return CreateActionResult(CustomResponseDto<List<ProductDto>>.Success(200, productDtos));
         }
 
 
@@ -36,16 +36,16 @@ namespace NLayer.API.Controllers
         {
             var product = await _service.GetByIdAsync(id);
             var productDto = _mapper.Map<ProductDto>(product);
-            return Ok(CustomResponseDto<ProductDto>.Success(200, productDto));
+            return CreateActionResult(CustomResponseDto<ProductDto>.Success(200, productDto));
         }
 
 
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto p)
         {
-            var product = _mapper.Map<Product>(p);
-            await _service.AddAsync(product);
-            return Ok(CustomResponseDto<ProductDto>.Success(201, p));
+            var product = await _service.AddAsync(_mapper.Map<Product>(p));
+            var productDto = _mapper.Map<ProductDto>(product);
+            return CreateActionResult(CustomResponseDto<ProductDto>.Success(201, productDto));
         }
 
 
@@ -55,7 +55,7 @@ namespace NLayer.API.Controllers
             var product = _mapper.Map<Product>(p);
             await _service.UpdateAsync(product);
 
-            return Ok(NoContentResponseDto.Success(204));
+            return CreateActionResult(CustomResponseDto<ProductDto>.Success(204));
         }
 
         [HttpDelete("{id}")]
@@ -63,8 +63,8 @@ namespace NLayer.API.Controllers
         {
             var product = await _service.GetByIdAsync(id);
             await _service.RemoveAsync(product);
-                
-            return Ok(NoContentResponseDto.Success(204));
+
+            return CreateActionResult(CustomResponseDto<ProductDto>.Success(204));
         }
     }
 }
