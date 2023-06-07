@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using NLayer.Core.DTOs;
+using NLayer.Core.DTOs.CategoryDTOs;
 using NLayer.Core.DTOs.ProductDTOs;
+using NLayer.Core.DTOs.ProductFeatureDTOs;
 using NLayer.Core.Entities;
 using System;
 using System.Collections.Generic;
