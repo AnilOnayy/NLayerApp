@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NLayer.Core.Entities;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
@@ -20,6 +21,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+builder.Services.AddScoped<IProductService,ProductService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Add Auto Mapper
