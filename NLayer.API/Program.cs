@@ -2,7 +2,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLayer.API.Filters;
-using NLayer.Core.Entities;
+using NLayer.API.Middlewares;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
@@ -19,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers(options =>
 {
-    options.Filters.Add(new ValidateFilterAttribute());
+    options.Filters.Add(new ValidateFilterAttribute()); // Tüm controller & actionlar çalýþmadan önce ValidateFilter sýnýfý çalýþýcak.
 });
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -68,6 +68,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomException();
 
 app.UseAuthorization();
 
