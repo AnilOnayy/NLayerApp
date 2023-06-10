@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using NLayer.Core.DTOs.ResponseDTOs;
-using NLayer.Service.Exepctions;
+using NLayer.Service.Exceptions;
 using System.Text.Json;
 
 namespace NLayer.API.Middlewares

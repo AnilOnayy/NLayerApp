@@ -2,7 +2,7 @@
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
-using NLayer.Service.Exepctions;
+using NLayer.Service.Exceptions;
 using System.Linq.Expressions;
 
 namespace NLayer.Service.Services
@@ -49,7 +49,7 @@ namespace NLayer.Service.Services
             var hasProduct = await _repository.GetByIdAsync(id);
             
             if(hasProduct==null)
-                throw new NotFoundException($"{typeof(T).Name} not found. (Id : {id})");
+                throw new NotFoundException($"{typeof(T).Name}({id}) not found.");
 
             return hasProduct;
         }

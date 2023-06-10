@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Service.Exepctions
+namespace NLayer.Service.Exceptions
 {
     public class NotFoundException : Exception
     {
