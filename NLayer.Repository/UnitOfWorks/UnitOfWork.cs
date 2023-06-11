@@ -16,7 +16,7 @@ namespace NLayer.Repository.UnitOfWorks
             _context.SaveChanges();
         }
 
-        public  async Task CommitAsync()
+        public async Task CommitAsync()
         {
             await _context.SaveChangesAsync();
         }

@@ -17,16 +17,16 @@ namespace NLayer.Core.DTOs.ResponseDTOs
         }
         public static CustomResponseDto<T> Success(int statusCode)
         {
-            return new CustomResponseDto<T> { StatusCode = statusCode , isSuccess = true };
+            return new CustomResponseDto<T> { StatusCode = statusCode, isSuccess = true };
         }
 
         public static CustomResponseDto<T> Fail(int statusCode, List<string> errors)
         {
-            return new CustomResponseDto<T> { StatusCode = statusCode, Errors = errors , isSuccess =false};
+            return new CustomResponseDto<T> { StatusCode = statusCode, Errors = errors, isSuccess = false };
         }
         public static CustomResponseDto<T> Fail(int statusCode, string error)
         {
-            return new CustomResponseDto<T> { StatusCode = statusCode, Errors = new List<string> { error } , isSuccess=false };
+            return new CustomResponseDto<T> { StatusCode = statusCode, Errors = new List<string> { error }, isSuccess = false };
         }
 
     }

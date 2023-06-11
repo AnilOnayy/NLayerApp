@@ -1,0 +1,33 @@
+﻿@model List<ProductWithCategoryDto>
+
+<div class="container">
+
+    <a asp-action="Save" class="btn btn-success">Add Product</a>
+
+    <table class="table table-striped">
+        <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Category</th>
+        <th>Update</th>
+        <th>Delete</th>
+        </thead>
+
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <th>@p.Id</th>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                    <td>@p.Stock</td>
+                    <td>@p.Category.Name</td>
+                    <td> <a asp-action="Update" asp-route-id="@p.Id" class="btn btn-warning">Update</a> </td>
+                    <td> <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-danger">Delete</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using NLayer.Core.DTOs.ResponseDTOs;
+using NLayer.Core.DTOs;
 using NLayer.Core.Entities;
 using NLayer.Core.Services;
 
-namespace NLayer.API.Filters
+namespace NLayer.Service.Filters
 {
     public class NotFoundFilter<T> : IAsyncActionFilter where T : BaseEntity
     {
-
         private readonly IService<T> _service;
 
         public NotFoundFilter(IService<T> service)
@@ -21,7 +20,10 @@ namespace NLayer.API.Filters
             var idValue = context.ActionArguments.Values.FirstOrDefault();
 
             if (idValue == null) // Herhangibir parametre almıyorsan direkt devam et
+            {
                 await next.Invoke();
+                return;
+            }
 
 
             var id = (int)idValue;
@@ -29,9 +31,16 @@ namespace NLayer.API.Filters
 
 
             if (anyEntity)
+            {
                 await next.Invoke();
+                return;
+            }
 
-            context.Result = new NotFoundObjectResult(CustomResponseDto<NoContentResponseDto>.Fail(404, $"{typeof(T).Name}({id}) not found."));
+
+            var error = new ErrorViewModel();
+            error.Errors.Add($"{typeof(T).Name}({id}) not found.");
+
+            context.Result = new RedirectToActionResult("Error", "Home", error);
         }
     }
 }
