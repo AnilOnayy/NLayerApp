@@ -18,7 +18,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
 builder.Services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidatior>());
- 
+
 
 // Add Auto Mapper
 builder.Services.AddAutoMapper(typeof(MapProfile));
@@ -45,11 +45,11 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 
 var app = builder.Build();
 
-app.UseExceptionHandler("/Home/Error");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
+    app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }

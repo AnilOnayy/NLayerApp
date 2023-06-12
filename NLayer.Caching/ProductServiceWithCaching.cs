@@ -30,7 +30,7 @@ namespace NLayer.Caching
             _repo = repo;
             _unitOfWork = unitOfWork;
 
-            if (! _memoryCache.TryGetValue(CacheProductKey, out _))
+            if (!_memoryCache.TryGetValue(CacheProductKey, out _))
             {
                 memoryCache.Set(CacheProductKey, _repo.GetProductsWithCategoryAsync().Result);
             }
@@ -46,7 +46,7 @@ namespace NLayer.Caching
 
         }
 
-        public async  Task<IEnumerable<Product>> AddRangeAsync(IEnumerable<Product> entities)
+        public async Task<IEnumerable<Product>> AddRangeAsync(IEnumerable<Product> entities)
         {
             await _repo.AddRangeAsync(entities);
             await _unitOfWork.CommitAsync();
@@ -65,7 +65,7 @@ namespace NLayer.Caching
         {
             var products = _memoryCache.Get<IEnumerable<Product>>(CacheProductKey);
 
-            if(products==null)
+            if (products == null)
             {
                 throw new NotFoundException("Products not found");
             }
@@ -77,7 +77,7 @@ namespace NLayer.Caching
         {
             var product = _memoryCache.Get<List<Product>>(CacheProductKey).FirstOrDefault(x => x.Id == id);
 
-            if(product==null)
+            if (product == null)
             {
                 throw new NotFoundException("Product not found");
             }
@@ -87,7 +87,7 @@ namespace NLayer.Caching
 
         public async Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetWithCategoryAsync()
         {
-            var products =  _memoryCache.Get<List<Product>>(CacheProductKey).ToList();
+            var products = _memoryCache.Get<List<Product>>(CacheProductKey).ToList();
             var data = _mapper.Map<List<ProductWithCategoryDto>>(products);
 
             return CustomResponseDto<List<ProductWithCategoryDto>>.Success(200, data);
@@ -122,7 +122,15 @@ namespace NLayer.Caching
         public async Task CacheAllProducts()
         {
 
-            _memoryCache.Set(CacheProductKey, await _repo.GetAll().ToListAsync());
+            _memoryCache.Set(CacheProductKey, await _repo.GetProductsWithCategoryAsync());
+        }
+
+        async Task<List<ProductWithCategoryDto>> IProductService.GetWithCategoryAsync()
+        {
+            var products = _memoryCache.Get<List<Product>>(CacheProductKey).ToList();
+            var data = _mapper.Map<List<ProductWithCategoryDto>>(products);
+
+            return data;
         }
     }
 }
