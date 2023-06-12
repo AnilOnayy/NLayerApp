@@ -10,6 +10,7 @@ using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
 using NLayer.Service.Exceptions;
 using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 
 namespace NLayer.Caching
 {
@@ -125,12 +126,5 @@ namespace NLayer.Caching
             _memoryCache.Set(CacheProductKey, await _repo.GetProductsWithCategoryAsync());
         }
 
-        async Task<List<ProductWithCategoryDto>> IProductService.GetWithCategoryAsync()
-        {
-            var products = _memoryCache.Get<List<Product>>(CacheProductKey).ToList();
-            var data = _mapper.Map<List<ProductWithCategoryDto>>(products);
-
-            return data;
-        }
     }
 }

@@ -7,6 +7,7 @@ using NLayer.Service.Filters;
 using NLayer.Service.Mapping;
 using NLayer.Service.Validation;
 using NLayer.Web.Modules;
+using NLayer.Web.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,21 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     {
         opt.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
     })
+);
+
+
+builder.Services.AddHttpClient<ProductApiServices>(
+    opt =>
+    {
+        opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
+    }
+);
+
+builder.Services.AddHttpClient<CategoryApiService>(
+    opt =>
+    {
+        opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
+    }
 );
 
 

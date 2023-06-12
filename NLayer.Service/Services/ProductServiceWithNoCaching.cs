@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using NLayer.Core.DTOs.ProductDTOs;
+using NLayer.Core.DTOs.ResponseDTOs;
 using NLayer.Core.Entities;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
@@ -25,6 +26,14 @@ namespace NLayer.Service.Services
 
             return productDtos;
 
+        }
+
+        async Task<CustomResponseDto<List<ProductWithCategoryDto>>> IProductService.GetWithCategoryAsync()
+        {
+            var products = await _productRepository.GetProductsWithCategoryAsync();
+            var productDtos = _mapper.Map<List<ProductWithCategoryDto>>(products);
+
+            return CustomResponseDto<List<ProductWithCategoryDto>>.Success(200,productDtos);
         }
     }
 }
