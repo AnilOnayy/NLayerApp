@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -79,9 +80,9 @@ namespace NLayer.Repository.Migrations
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6290), "Kalemler", null },
-                    { 2, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6309), "Kitaplar", null },
-                    { 3, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6310), "Defterler", null }
+                    { 1, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(3347), "Kalemler", null },
+                    { 2, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(3397), "Kitaplar", null },
+                    { 3, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(3399), "Defterler", null }
                 });
 
             migrationBuilder.InsertData(
@@ -89,12 +90,12 @@ namespace NLayer.Repository.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedDate", "Name", "Price", "ProductFeatureId", "Stock", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6890), "Faber Castell 0.7 Uçlu Kalem", 100m, 0, 30, null },
-                    { 2, 1, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6893), "Faber Castell 0.9 Uçlu Kalem", 120m, 0, 40, null },
-                    { 3, 2, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6895), "Kürk Mantolu Madonna", 170m, 0, 30, null },
-                    { 4, 2, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6896), "Nietzsche Ağladığında", 80m, 0, 10, null },
-                    { 5, 3, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6903), "Kareli 90 yaprak defter", 30m, 0, 100, null },
-                    { 6, 3, new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6906), "180 yaprak düz defter", 80m, 0, 40, null }
+                    { 1, 1, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4087), "Faber Castell 0.7 Uçlu Kalem", 100m, 0, 30, null },
+                    { 2, 1, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4093), "Faber Castell 0.9 Uçlu Kalem", 120m, 0, 40, null },
+                    { 3, 2, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4097), "Kürk Mantolu Madonna", 170m, 0, 30, null },
+                    { 4, 2, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4099), "Nietzsche Ağladığında", 80m, 0, 10, null },
+                    { 5, 3, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4101), "Kareli 90 yaprak defter", 30m, 0, 100, null },
+                    { 6, 3, new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4104), "180 yaprak düz defter", 80m, 0, 40, null }
                 });
 
             migrationBuilder.InsertData(

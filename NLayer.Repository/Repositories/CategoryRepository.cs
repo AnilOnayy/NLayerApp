@@ -10,6 +10,11 @@ namespace NLayer.Repository.Repositories
         {
         }
 
+        public async Task<List<Category>> GetCategoriesWithProductsAsync()
+        {
+            return await _context.Categories.AsNoTracking().ToListAsync();
+        }
+
         public async Task<Category> GetCategoryByIdWithProductsAsync(int id)
         {
             return await _context

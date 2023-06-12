@@ -11,10 +11,10 @@ namespace NLayer.API.Controllers
     {
 
 
-        private readonly ICategoryService _service;
+        private readonly ICategoryServiceWithDto _service;
         private readonly IMapper _mapper;
 
-        public CategoriesController(ICategoryService service, IMapper mapper)
+        public CategoriesController(ICategoryServiceWithDto service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

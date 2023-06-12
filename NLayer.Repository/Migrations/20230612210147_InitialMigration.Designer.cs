@@ -12,7 +12,7 @@ using NLayer.Repository;
 namespace NLayer.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230607140221_InitialMigration")]
+    [Migration("20230612210147_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -52,19 +52,19 @@ namespace NLayer.Repository.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6290),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(3347),
                             Name = "Kalemler"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6309),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(3397),
                             Name = "Kitaplar"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6310),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(3399),
                             Name = "Defterler"
                         });
                 });
@@ -111,7 +111,7 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6890),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4087),
                             Name = "Faber Castell 0.7 Uçlu Kalem",
                             Price = 100m,
                             ProductFeatureId = 0,
@@ -121,7 +121,7 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6893),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4093),
                             Name = "Faber Castell 0.9 Uçlu Kalem",
                             Price = 120m,
                             ProductFeatureId = 0,
@@ -131,7 +131,7 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6895),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4097),
                             Name = "Kürk Mantolu Madonna",
                             Price = 170m,
                             ProductFeatureId = 0,
@@ -141,7 +141,7 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6896),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4099),
                             Name = "Nietzsche Ağladığında",
                             Price = 80m,
                             ProductFeatureId = 0,
@@ -151,7 +151,7 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 5,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6903),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4101),
                             Name = "Kareli 90 yaprak defter",
                             Price = 30m,
                             ProductFeatureId = 0,
@@ -161,7 +161,7 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 6,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2023, 6, 7, 17, 2, 21, 791, DateTimeKind.Local).AddTicks(6906),
+                            CreatedDate = new DateTime(2023, 6, 13, 0, 1, 47, 679, DateTimeKind.Local).AddTicks(4104),
                             Name = "180 yaprak düz defter",
                             Price = 80m,
                             ProductFeatureId = 0,
@@ -276,8 +276,7 @@ namespace NLayer.Repository.Migrations
 
             modelBuilder.Entity("NLayer.Core.Entities.Product", b =>
                 {
-                    b.Navigation("ProductFeature")
-                        .IsRequired();
+                    b.Navigation("ProductFeature");
                 });
 #pragma warning restore 612, 618
         }
