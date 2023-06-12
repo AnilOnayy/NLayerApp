@@ -10,6 +10,11 @@ namespace NLayer.API.Controllers
     {
         private readonly ICategoryServiceWithDto _service;
 
+        public CategoriesWithDtoController(ICategoryServiceWithDto service)
+        {
+            _service = service;
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
