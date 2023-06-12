@@ -18,7 +18,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
 builder.Services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidatior>());
-
+ 
 
 // Add Auto Mapper
 builder.Services.AddAutoMapper(typeof(MapProfile));
